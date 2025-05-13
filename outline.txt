@@ -1,0 +1,25 @@
+process init:
+    bcs = FP_SEG(print_ticks);
+    bip = FP_OFF(print_ticks);
+    p_stk = (unsigned char*)malloc(STK_TOP);
+    bss = FP_SEG(p_stk);
+    bsp = FP_OFF(p_stk) + STK_TOP;
+
+get old timer interrupt:
+    old_vec = getvect(DOS_TIMER_INT_NUM);
+
+set new timer interrupt:
+    setvect(DOS_TIMER_INT_NUM, new_vec);
+
+new interrupt handling new_vec():
+    (*old_vec)();
+
+    /* switch to print_ticks() */
+    /* not published here */
+
+process print_ticks():
+    /* do its own processing */
+    /* printf() show status */
+
+    /* return control to main() */
+    /* not published here */

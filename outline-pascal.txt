@@ -1,0 +1,25 @@
+process init:
+    bcs:=cseg;
+    pcb[0].bip := ofs(proc19);
+    bss:=sseg+$200+(i-1)*stack_len;
+    bsp:=stack_top;
+    setup initial stack
+
+get old timer interrupt:
+    tm_vector.ip:=memw[0:tm_vector.no*4];
+    tm_vector.cs:=memw[0:tm_vector.no*4+2];
+
+set new timer interrupt:
+    memw[0:tm_vector.no*4]  :=ofs(newtimer);
+    memw[0:tm_vector.no*4+2]:=cseg;
+
+new interrupt handling newtimer:
+    switch to proc19
+    not published here
+
+process print_ticks():
+    do its own processing
+    write() show status
+
+    return control to pccl
+    not published here
