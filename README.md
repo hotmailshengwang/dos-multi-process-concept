@@ -15,3 +15,5 @@ pccl will call proc19 again.
 Hit Esc, program then ends.
 Video is here:
 https://drive.google.com/file/d/1EwvvL6YkWh2nDBKI5VTPtT6efRvOMQSj/view?usp=drive_link
+
+kind of like Linux pthread_create()/pthread_join() or Windows CreateThread()/ExitThread() under DOS
